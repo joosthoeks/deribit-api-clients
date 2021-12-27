@@ -2244,18 +2244,19 @@ class PublicApi(object):
             _request_timeout=local_var_params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def public_get_tradingview_chart_data_get(self, instrument_name, start_timestamp, end_timestamp, **kwargs):  # noqa: E501
+    def public_get_tradingview_chart_data_get(self, instrument_name, start_timestamp, end_timestamp, resolution, **kwargs):  # noqa: E501
         """Publicly available market data used to generate a TradingView candle chart.  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.public_get_tradingview_chart_data_get(instrument_name, start_timestamp, end_timestamp, async_req=True)
+        >>> thread = api.public_get_tradingview_chart_data_get(instrument_name, start_timestamp, end_timestamp, resolution, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
         :param str instrument_name: Instrument name (required)
         :param int start_timestamp: The earliest timestamp to return result for (required)
         :param int end_timestamp: The most recent timestamp to return result for (required)
+        :param str resolution: Resolution of data (required)
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
@@ -2268,20 +2269,21 @@ class PublicApi(object):
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-        return self.public_get_tradingview_chart_data_get_with_http_info(instrument_name, start_timestamp, end_timestamp, **kwargs)  # noqa: E501
+        return self.public_get_tradingview_chart_data_get_with_http_info(instrument_name, start_timestamp, end_timestamp, resolution, **kwargs)  # noqa: E501
 
-    def public_get_tradingview_chart_data_get_with_http_info(self, instrument_name, start_timestamp, end_timestamp, **kwargs):  # noqa: E501
+    def public_get_tradingview_chart_data_get_with_http_info(self, instrument_name, start_timestamp, end_timestamp, resolution, **kwargs):  # noqa: E501
         """Publicly available market data used to generate a TradingView candle chart.  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.public_get_tradingview_chart_data_get_with_http_info(instrument_name, start_timestamp, end_timestamp, async_req=True)
+        >>> thread = api.public_get_tradingview_chart_data_get_with_http_info(instrument_name, start_timestamp, end_timestamp, resolution, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
         :param str instrument_name: Instrument name (required)
         :param int start_timestamp: The earliest timestamp to return result for (required)
         :param int end_timestamp: The most recent timestamp to return result for (required)
+        :param str resolution: Resolution of data (required)
         :param _return_http_data_only: response data without head status code
                                        and headers
         :param _preload_content: if False, the urllib3.HTTPResponse object will
@@ -2298,7 +2300,7 @@ class PublicApi(object):
 
         local_var_params = locals()
 
-        all_params = ['instrument_name', 'start_timestamp', 'end_timestamp']  # noqa: E501
+        all_params = ['instrument_name', 'start_timestamp', 'end_timestamp', 'resolution']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -2324,6 +2326,9 @@ class PublicApi(object):
         if ('end_timestamp' not in local_var_params or
                 local_var_params['end_timestamp'] is None):
             raise ApiValueError("Missing the required parameter `end_timestamp` when calling `public_get_tradingview_chart_data_get`")  # noqa: E501
+        if ('resolution' not in local_var_params or
+                local_var_params['resolution'] is None):
+            raise ApiValueError("Missing the required parameter `resolution` when calling `public_get_tradingview_chart_data_get`")  # noqa: E501
 
         collection_formats = {}
 
@@ -2336,6 +2341,8 @@ class PublicApi(object):
             query_params.append(('start_timestamp', local_var_params['start_timestamp']))  # noqa: E501
         if 'end_timestamp' in local_var_params:
             query_params.append(('end_timestamp', local_var_params['end_timestamp']))  # noqa: E501
+        if 'resolution' in local_var_params:
+            query_params.append(('resolution', local_var_params['resolution']))  # noqa: E501
 
         header_params = {}
 

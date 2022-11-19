@@ -187,6 +187,7 @@ class PrivateApi(object):
         :param str time_in_force: <p>Specifies how long the order remains in effect. Default `\"good_til_cancelled\"`</p> <ul> <li>`\"good_til_cancelled\"` - unfilled order remains in order book until cancelled</li> <li>`\"fill_or_kill\"` - execute a transaction immediately and completely or not at all</li> <li>`\"immediate_or_cancel\"` - execute a transaction immediately, and any portion of the order that cannot be immediately filled is cancelled</li> </ul>
         :param float max_show: Maximum amount within an order to be shown to other customers, `0` for invisible order
         :param bool post_only: <p>If true, the order is considered post-only. If the new price would cause the order to be filled immediately (as taker), the price will be changed to be just below the bid.</p> <p>Only valid in combination with time_in_force=`\"good_til_cancelled\"`</p>
+        :param bool reject_post_only: If an order is considered post-only and this field is set to true then the order is put to order book unmodified or request is rejected.
         :param bool reduce_only: If `true`, the order is considered reduce-only which is intended to only reduce a current position
         :param float stop_price: Stop price, required for stop limit orders (Only for stop orders)
         :param float trigger_offset: The maximum deviation from the price peak beyond which the order will be triggered
@@ -223,6 +224,7 @@ class PrivateApi(object):
         :param str time_in_force: <p>Specifies how long the order remains in effect. Default `\"good_til_cancelled\"`</p> <ul> <li>`\"good_til_cancelled\"` - unfilled order remains in order book until cancelled</li> <li>`\"fill_or_kill\"` - execute a transaction immediately and completely or not at all</li> <li>`\"immediate_or_cancel\"` - execute a transaction immediately, and any portion of the order that cannot be immediately filled is cancelled</li> </ul>
         :param float max_show: Maximum amount within an order to be shown to other customers, `0` for invisible order
         :param bool post_only: <p>If true, the order is considered post-only. If the new price would cause the order to be filled immediately (as taker), the price will be changed to be just below the bid.</p> <p>Only valid in combination with time_in_force=`\"good_til_cancelled\"`</p>
+        :param bool reject_post_only: If an order is considered post-only and this field is set to true then the order is put to order book unmodified or request is rejected.
         :param bool reduce_only: If `true`, the order is considered reduce-only which is intended to only reduce a current position
         :param float stop_price: Stop price, required for stop limit orders (Only for stop orders)
         :param float trigger_offset: The maximum deviation from the price peak beyond which the order will be triggered
@@ -244,7 +246,7 @@ class PrivateApi(object):
 
         local_var_params = locals()
 
-        all_params = ['instrument_name', 'amount', 'type', 'label', 'price', 'time_in_force', 'max_show', 'post_only', 'reduce_only', 'stop_price', 'trigger_offset', 'trigger', 'advanced']  # noqa: E501
+        all_params = ['instrument_name', 'amount', 'type', 'label', 'price', 'time_in_force', 'max_show', 'post_only', 'reject_post_only', 'reduce_only', 'stop_price', 'trigger_offset', 'trigger', 'advanced']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -288,6 +290,8 @@ class PrivateApi(object):
             query_params.append(('max_show', local_var_params['max_show']))  # noqa: E501
         if 'post_only' in local_var_params:
             query_params.append(('post_only', local_var_params['post_only']))  # noqa: E501
+        if 'reject_post_only' in local_var_params:
+            query_params.append(('reject_post_only', local_var_params['reject_post_only']))  # noqa: E501
         if 'reduce_only' in local_var_params:
             query_params.append(('reduce_only', local_var_params['reduce_only']))  # noqa: E501
         if 'stop_price' in local_var_params:
@@ -4780,6 +4784,7 @@ class PrivateApi(object):
         :param str time_in_force: <p>Specifies how long the order remains in effect. Default `\"good_til_cancelled\"`</p> <ul> <li>`\"good_til_cancelled\"` - unfilled order remains in order book until cancelled</li> <li>`\"fill_or_kill\"` - execute a transaction immediately and completely or not at all</li> <li>`\"immediate_or_cancel\"` - execute a transaction immediately, and any portion of the order that cannot be immediately filled is cancelled</li> </ul>
         :param float max_show: Maximum amount within an order to be shown to other customers, `0` for invisible order
         :param bool post_only: <p>If true, the order is considered post-only. If the new price would cause the order to be filled immediately (as taker), the price will be changed to be just below the bid.</p> <p>Only valid in combination with time_in_force=`\"good_til_cancelled\"`</p>
+        :param bool reject_post_only: If an order is considered post-only and this field is set to true then the order is put to order book unmodified or request is rejected.
         :param bool reduce_only: If `true`, the order is considered reduce-only which is intended to only reduce a current position
         :param float stop_price: Stop price, required for stop limit orders (Only for stop orders)
         :param float trigger_offset: The maximum deviation from the price peak beyond which the order will be triggered
@@ -4816,6 +4821,7 @@ class PrivateApi(object):
         :param str time_in_force: <p>Specifies how long the order remains in effect. Default `\"good_til_cancelled\"`</p> <ul> <li>`\"good_til_cancelled\"` - unfilled order remains in order book until cancelled</li> <li>`\"fill_or_kill\"` - execute a transaction immediately and completely or not at all</li> <li>`\"immediate_or_cancel\"` - execute a transaction immediately, and any portion of the order that cannot be immediately filled is cancelled</li> </ul>
         :param float max_show: Maximum amount within an order to be shown to other customers, `0` for invisible order
         :param bool post_only: <p>If true, the order is considered post-only. If the new price would cause the order to be filled immediately (as taker), the price will be changed to be just below the bid.</p> <p>Only valid in combination with time_in_force=`\"good_til_cancelled\"`</p>
+        :param bool reject_post_only: If an order is considered post-only and this field is set to true then the order is put to order book unmodified or request is rejected.
         :param bool reduce_only: If `true`, the order is considered reduce-only which is intended to only reduce a current position
         :param float stop_price: Stop price, required for stop limit orders (Only for stop orders)
         :param float trigger_offset: The maximum deviation from the price peak beyond which the order will be triggered
@@ -4837,7 +4843,7 @@ class PrivateApi(object):
 
         local_var_params = locals()
 
-        all_params = ['instrument_name', 'amount', 'type', 'label', 'price', 'time_in_force', 'max_show', 'post_only', 'reduce_only', 'stop_price', 'trigger_offset', 'trigger', 'advanced']  # noqa: E501
+        all_params = ['instrument_name', 'amount', 'type', 'label', 'price', 'time_in_force', 'max_show', 'post_only', 'reject_post_only', 'reduce_only', 'stop_price', 'trigger_offset', 'trigger', 'advanced']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -4881,6 +4887,8 @@ class PrivateApi(object):
             query_params.append(('max_show', local_var_params['max_show']))  # noqa: E501
         if 'post_only' in local_var_params:
             query_params.append(('post_only', local_var_params['post_only']))  # noqa: E501
+        if 'reject_post_only' in local_var_params:
+            query_params.append(('reject_post_only', local_var_params['reject_post_only']))  # noqa: E501
         if 'reduce_only' in local_var_params:
             query_params.append(('reduce_only', local_var_params['reduce_only']))  # noqa: E501
         if 'stop_price' in local_var_params:

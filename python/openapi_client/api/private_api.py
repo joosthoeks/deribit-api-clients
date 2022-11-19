@@ -193,6 +193,7 @@ class PrivateApi(object):
         :param float trigger_offset: The maximum deviation from the price peak beyond which the order will be triggered
         :param str trigger: Defines trigger type, required for `\"stop_limit\"` order type
         :param str advanced: Advanced option order type. (Only for options)
+        :param bool mmp: Order MMP flag, only for order_type 'limit'
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
@@ -230,6 +231,7 @@ class PrivateApi(object):
         :param float trigger_offset: The maximum deviation from the price peak beyond which the order will be triggered
         :param str trigger: Defines trigger type, required for `\"stop_limit\"` order type
         :param str advanced: Advanced option order type. (Only for options)
+        :param bool mmp: Order MMP flag, only for order_type 'limit'
         :param _return_http_data_only: response data without head status code
                                        and headers
         :param _preload_content: if False, the urllib3.HTTPResponse object will
@@ -246,7 +248,7 @@ class PrivateApi(object):
 
         local_var_params = locals()
 
-        all_params = ['instrument_name', 'amount', 'type', 'label', 'price', 'time_in_force', 'max_show', 'post_only', 'reject_post_only', 'reduce_only', 'trigger_price', 'trigger_offset', 'trigger', 'advanced']  # noqa: E501
+        all_params = ['instrument_name', 'amount', 'type', 'label', 'price', 'time_in_force', 'max_show', 'post_only', 'reject_post_only', 'reduce_only', 'trigger_price', 'trigger_offset', 'trigger', 'advanced', 'mmp']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -302,6 +304,8 @@ class PrivateApi(object):
             query_params.append(('trigger', local_var_params['trigger']))  # noqa: E501
         if 'advanced' in local_var_params:
             query_params.append(('advanced', local_var_params['advanced']))  # noqa: E501
+        if 'mmp' in local_var_params:
+            query_params.append(('mmp', local_var_params['mmp']))  # noqa: E501
 
         header_params = {}
 
@@ -4790,6 +4794,7 @@ class PrivateApi(object):
         :param float trigger_offset: The maximum deviation from the price peak beyond which the order will be triggered
         :param str trigger: Defines trigger type, required for `\"stop_limit\"` order type
         :param str advanced: Advanced option order type. (Only for options)
+        :param bool mmp: Order MMP flag, only for order_type 'limit'
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
@@ -4827,6 +4832,7 @@ class PrivateApi(object):
         :param float trigger_offset: The maximum deviation from the price peak beyond which the order will be triggered
         :param str trigger: Defines trigger type, required for `\"stop_limit\"` order type
         :param str advanced: Advanced option order type. (Only for options)
+        :param bool mmp: Order MMP flag, only for order_type 'limit'
         :param _return_http_data_only: response data without head status code
                                        and headers
         :param _preload_content: if False, the urllib3.HTTPResponse object will
@@ -4843,7 +4849,7 @@ class PrivateApi(object):
 
         local_var_params = locals()
 
-        all_params = ['instrument_name', 'amount', 'type', 'label', 'price', 'time_in_force', 'max_show', 'post_only', 'reject_post_only', 'reduce_only', 'trigger_price', 'trigger_offset', 'trigger', 'advanced']  # noqa: E501
+        all_params = ['instrument_name', 'amount', 'type', 'label', 'price', 'time_in_force', 'max_show', 'post_only', 'reject_post_only', 'reduce_only', 'trigger_price', 'trigger_offset', 'trigger', 'advanced', 'mmp']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -4899,6 +4905,8 @@ class PrivateApi(object):
             query_params.append(('trigger', local_var_params['trigger']))  # noqa: E501
         if 'advanced' in local_var_params:
             query_params.append(('advanced', local_var_params['advanced']))  # noqa: E501
+        if 'mmp' in local_var_params:
+            query_params.append(('mmp', local_var_params['mmp']))  # noqa: E501
 
         header_params = {}
 

@@ -189,7 +189,7 @@ class PrivateApi(object):
         :param bool post_only: <p>If true, the order is considered post-only. If the new price would cause the order to be filled immediately (as taker), the price will be changed to be just below the bid.</p> <p>Only valid in combination with time_in_force=`\"good_til_cancelled\"`</p>
         :param bool reject_post_only: If an order is considered post-only and this field is set to true then the order is put to order book unmodified or request is rejected.
         :param bool reduce_only: If `true`, the order is considered reduce-only which is intended to only reduce a current position
-        :param float stop_price: Stop price, required for stop limit orders (Only for stop orders)
+        :param float trigger_price: Trigger price, required for trigger orders only (Stop-loss or Take-profit orders)
         :param float trigger_offset: The maximum deviation from the price peak beyond which the order will be triggered
         :param str trigger: Defines trigger type, required for `\"stop_limit\"` order type
         :param str advanced: Advanced option order type. (Only for options)
@@ -226,7 +226,7 @@ class PrivateApi(object):
         :param bool post_only: <p>If true, the order is considered post-only. If the new price would cause the order to be filled immediately (as taker), the price will be changed to be just below the bid.</p> <p>Only valid in combination with time_in_force=`\"good_til_cancelled\"`</p>
         :param bool reject_post_only: If an order is considered post-only and this field is set to true then the order is put to order book unmodified or request is rejected.
         :param bool reduce_only: If `true`, the order is considered reduce-only which is intended to only reduce a current position
-        :param float stop_price: Stop price, required for stop limit orders (Only for stop orders)
+        :param float trigger_price: Trigger price, required for trigger orders only (Stop-loss or Take-profit orders)
         :param float trigger_offset: The maximum deviation from the price peak beyond which the order will be triggered
         :param str trigger: Defines trigger type, required for `\"stop_limit\"` order type
         :param str advanced: Advanced option order type. (Only for options)
@@ -246,7 +246,7 @@ class PrivateApi(object):
 
         local_var_params = locals()
 
-        all_params = ['instrument_name', 'amount', 'type', 'label', 'price', 'time_in_force', 'max_show', 'post_only', 'reject_post_only', 'reduce_only', 'stop_price', 'trigger_offset', 'trigger', 'advanced']  # noqa: E501
+        all_params = ['instrument_name', 'amount', 'type', 'label', 'price', 'time_in_force', 'max_show', 'post_only', 'reject_post_only', 'reduce_only', 'trigger_price', 'trigger_offset', 'trigger', 'advanced']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -294,8 +294,8 @@ class PrivateApi(object):
             query_params.append(('reject_post_only', local_var_params['reject_post_only']))  # noqa: E501
         if 'reduce_only' in local_var_params:
             query_params.append(('reduce_only', local_var_params['reduce_only']))  # noqa: E501
-        if 'stop_price' in local_var_params:
-            query_params.append(('stop_price', local_var_params['stop_price']))  # noqa: E501
+        if 'trigger_price' in local_var_params:
+            query_params.append(('trigger_price', local_var_params['trigger_price']))  # noqa: E501
         if 'trigger_offset' in local_var_params:
             query_params.append(('trigger_offset', local_var_params['trigger_offset']))  # noqa: E501
         if 'trigger' in local_var_params:
@@ -4786,7 +4786,7 @@ class PrivateApi(object):
         :param bool post_only: <p>If true, the order is considered post-only. If the new price would cause the order to be filled immediately (as taker), the price will be changed to be just below the bid.</p> <p>Only valid in combination with time_in_force=`\"good_til_cancelled\"`</p>
         :param bool reject_post_only: If an order is considered post-only and this field is set to true then the order is put to order book unmodified or request is rejected.
         :param bool reduce_only: If `true`, the order is considered reduce-only which is intended to only reduce a current position
-        :param float stop_price: Stop price, required for stop limit orders (Only for stop orders)
+        :param float trigger_price: Trigger price, required for trigger orders only (Stop-loss or Take-profit orders)
         :param float trigger_offset: The maximum deviation from the price peak beyond which the order will be triggered
         :param str trigger: Defines trigger type, required for `\"stop_limit\"` order type
         :param str advanced: Advanced option order type. (Only for options)
@@ -4823,7 +4823,7 @@ class PrivateApi(object):
         :param bool post_only: <p>If true, the order is considered post-only. If the new price would cause the order to be filled immediately (as taker), the price will be changed to be just below the bid.</p> <p>Only valid in combination with time_in_force=`\"good_til_cancelled\"`</p>
         :param bool reject_post_only: If an order is considered post-only and this field is set to true then the order is put to order book unmodified or request is rejected.
         :param bool reduce_only: If `true`, the order is considered reduce-only which is intended to only reduce a current position
-        :param float stop_price: Stop price, required for stop limit orders (Only for stop orders)
+        :param float trigger_price: Trigger price, required for trigger orders only (Stop-loss or Take-profit orders)
         :param float trigger_offset: The maximum deviation from the price peak beyond which the order will be triggered
         :param str trigger: Defines trigger type, required for `\"stop_limit\"` order type
         :param str advanced: Advanced option order type. (Only for options)
@@ -4843,7 +4843,7 @@ class PrivateApi(object):
 
         local_var_params = locals()
 
-        all_params = ['instrument_name', 'amount', 'type', 'label', 'price', 'time_in_force', 'max_show', 'post_only', 'reject_post_only', 'reduce_only', 'stop_price', 'trigger_offset', 'trigger', 'advanced']  # noqa: E501
+        all_params = ['instrument_name', 'amount', 'type', 'label', 'price', 'time_in_force', 'max_show', 'post_only', 'reject_post_only', 'reduce_only', 'trigger_price', 'trigger_offset', 'trigger', 'advanced']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -4891,8 +4891,8 @@ class PrivateApi(object):
             query_params.append(('reject_post_only', local_var_params['reject_post_only']))  # noqa: E501
         if 'reduce_only' in local_var_params:
             query_params.append(('reduce_only', local_var_params['reduce_only']))  # noqa: E501
-        if 'stop_price' in local_var_params:
-            query_params.append(('stop_price', local_var_params['stop_price']))  # noqa: E501
+        if 'trigger_price' in local_var_params:
+            query_params.append(('trigger_price', local_var_params['trigger_price']))  # noqa: E501
         if 'trigger_offset' in local_var_params:
             query_params.append(('trigger_offset', local_var_params['trigger_offset']))  # noqa: E501
         if 'trigger' in local_var_params:
